@@ -118,7 +118,7 @@ class RegisterForm(UserCreationForm):
         )
 
     def clean_email(self):
-        email = self.clean_email.get('email')
+        email = self.cleaned_data.get('email')
 
         if User.objects.filter(email=email).exists():
             self.add_error(
