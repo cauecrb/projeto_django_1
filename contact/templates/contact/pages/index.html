@@ -19,34 +19,37 @@
             </thead>
 
             <tbody>
+
                 {% for contact in page_obj %}
-                    <tr class="table-row">
-                        <td class="table-cell">
-                            <a class="table-link" href="{%url 'contact:contact' contact.id %}">
-                                {{ contact.id }}
-                            </a>
-                        </td>
-                        <td class="table-cell">
-                            <a class="table-link" href="#">
-                                {{ contact.first_name }}
-                            </a>
-                        </td>
-                        <td class="table-cell">
-                            <a class="table-link" href="#">
-                                {{ contact.last_name }}
-                            </a>
-                        </td>
-                        <td class="table-cell">
-                            <a class="table-link" href="#">
-                                {{ contact.phone }}
-                            </a>
-                        </td>
-                        <td class="table-cell">
-                            <a class="table-link" href="#">
-                                {{ contact.email }}
-                            </a>
-                        </td>
-                    </tr>
+                    {% if contact.owner_id == user.id %}
+                        <tr class="table-row">
+                            <td class="table-cell">
+                                <a class="table-link" href="{%url 'contact:contact' contact.id %}">
+                                    {{ contact.id }}
+                                </a>
+                            </td>
+                            <td class="table-cell">
+                                <a class="table-link" href="#">
+                                    {{ contact.first_name }}
+                                </a>
+                            </td>
+                            <td class="table-cell">
+                                <a class="table-link" href="#">
+                                    {{ contact.last_name }}
+                                </a>
+                            </td>
+                            <td class="table-cell">
+                                <a class="table-link" href="#">
+                                    {{ contact.phone }}
+                                </a>
+                            </td>
+                            <td class="table-cell">
+                                <a class="table-link" href="#">
+                                    {{ contact.email }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
